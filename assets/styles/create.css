@@ -1,0 +1,31 @@
+.sidebar {
+  height: 100vh;
+}
+
+.post-fuck {
+  border-color: #000000 !important;
+}
+
+.post-alert {
+  border-color: #fbc02d !important;
+}
+
+.post-thank {
+  border-color: #00C851 !important;
+}
+
+.post-sorry {
+  border-color: #ec407a !important;
+}
+
+.location-span {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  color: #999;
+}
+
+.row.navbar {
+  display: flex;
+  justify-content: space-around;
+}

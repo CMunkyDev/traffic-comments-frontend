@@ -1,0 +1,102 @@
+.sidebar {
+  height: 100vh;
+}
+
+.header {
+  height: 10vh;
+}
+
+.post {
+  margin: 10px;
+  /*min-width: 335px;*/
+}
+
+.post-area {
+  padding-top: 10px;
+  background-color: white;
+}
+
+.post-fuck {
+  border-color: #000000 !important;
+}
+
+.post-alert {
+  border-color: #fbc02d !important;
+}
+
+.post-thank {
+  border-color: #00C851 !important;
+}
+
+.post-sorry {
+  border-color: #ec407a !important;
+}
+
+.post .card-body {
+  border: 3px solid;
+  border-radius: 5px;
+  border-color: inherit;
+}
+
+.post .card-title {
+  padding-bottom: 4px;
+  border-bottom: 1px solid;
+  border-color: inherit;
+}
+
+.post-created {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  color: #ccc;
+  font-weight: 100;
+  font-size: 0.7rem;
+}
+
+.location-span {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  color: #999;
+}
+
+.row.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-bar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.show-bar .btn-group {
+  display: flex;
+}
+
+.show-bar .btn {
+  flex: 1;
+}
+
+.show-bar .btn-group :first-child {
+  border-top-left-radius: 15px;
+}
+
+.show-bar .btn-group :last-child {
+  border-top-right-radius: 15px;
+}
+
+.sort-bar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sort-bar .btn-group {
+  display: flex;
+  background-color: #fff;
+}
+.sort-bar .btn {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex: 1;
+}
