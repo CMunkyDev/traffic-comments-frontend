@@ -17,7 +17,7 @@
 }
 
 .post-fuck {
-  border-color: #000000 !important;
+  border-color: #2e2e2e !important;
 }
 
 .post-alert {
@@ -60,10 +60,7 @@
   color: #999;
 }
 
-.row.navbar {
-  display: flex;
-  justify-content: space-around;
-}
+
 
 .show-bar {
   padding-left: 0;
@@ -99,4 +96,37 @@
   padding-top: 5px;
   padding-bottom: 5px;
   flex: 1;
+}
+
+
+#post-form {
+  border-radius: 10px 10px 0 0;
+  padding: 25px;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+#save-button {
+  margin: 0;
+  width: 100%;
+}
+
+#post-form-head {
+  margin: 10px 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+textarea.form-control::placeholder {
+  font-weight: 300;
+  color: #ccc;
+}
+
+.post-creator {
+  border-radius: 5px;
+}
+
+.row.navbar {
+  display: flex;
+  justify-content: space-around;
 }

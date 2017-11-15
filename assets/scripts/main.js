@@ -1,5 +1,7 @@
 let postArea = document.querySelector('.post-area')
 
-axios.get('http://localhost:8080/posts').then(result => {
-  result.data.posts.forEach(post => postArea.innerHTML += formatPost(post))
+axios.get(`${BASE_URL}/posts`).then(result => {
+  let postFill = ''
+  result.data.posts.forEach(post => postFill += formatPost(post))
+  postArea.innerHTML = postFill;
 })

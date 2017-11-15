@@ -1,12 +1,3 @@
-let transportTypeArr = ['Foot', 'Bike', 'Car', 'Motorbike', 'Public Transport', 'Other']
-let postTypeArr = ['Sorry', 'Thank You', '!@#$ You', 'Alert']
-let postTypeCss = ['sorry', 'thank', 'fuck', 'alert']
-let buttonColorCss = ['btn-pink', 'btn-success', 'btn-black', 'btn-warning']
-
-const createButtons = postObj => {
-
-}
-
 const formatPost = postObj => {
   return `<div class="card post post-${postTypeCss[postObj.post_type]}">
     <div class="card-body"
