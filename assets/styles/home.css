@@ -21,11 +21,11 @@
 }
 
 .post-alert {
-  border-color: #fbc02d !important;
+  border-color: #ff8919 !important;
 }
 
 .post-thank {
-  border-color: #00C851 !important;
+  border-color: #00c851 !important;
 }
 
 .post-sorry {
@@ -160,4 +160,8 @@ textarea.form-control::placeholder {
 
 #id-alert {
   flex-direction: column;
+}
+
+.content-area {
+  background-color: #33b5e5;
 }

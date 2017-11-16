@@ -15,6 +15,7 @@ let idClose = document.querySelector('#id-form-close')
 
 let idDisplay = document.querySelector('#id-display-accept')
 
+let area = document.querySelector('.content-area')
 //const postTypeCss = ['sorry', 'thank', 'fuck', 'alert']
 let createButtonOrder = [apologizeButton, thankButton, yellButton, alertButton]
 
@@ -25,6 +26,9 @@ function goHome () {
   }, 0)
 }
 
+function colorBack (typeIndex) {
+  area.style = `background-color:${postTypeColor[typeIndex]}`
+}
 
 idEdit.addEventListener('click', event => {
   axios.get(`${BASE_URL}/posts/${idInput.value}`)
@@ -32,7 +36,9 @@ idEdit.addEventListener('click', event => {
       let post = response.data.post
       window.location.hash= ''
       hideBars()
-      switchToEdit(post.post_type_index, 'Edit', post)
+      console.log(post)
+      switchToEdit(post.post_type, 'Edit', post)
+      colorBack(post.post_type)
     })
 })
 
@@ -71,6 +77,7 @@ createButtonOrder.forEach((button, index) => {
     window.postTypeIndex = index
     hideBars()
     switchToEdit(index, 'Create')
+    colorBack(index)
   })
 })
 
