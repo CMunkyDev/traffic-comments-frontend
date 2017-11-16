@@ -99,6 +99,10 @@ function switchToEdit(postTypeIndex, editType, post = {}) {
     event.preventDefault()
     let body = acquireForm(event.target.form)
     axios.post(`${BASE_URL}/posts`, body)
+      .then(response => {
+        displayId(response.data.post.id)
+        window.location.hash = '#id-display'
+      })
   })
 
   createMakeSelector(selfMakeSelector, 'Your')

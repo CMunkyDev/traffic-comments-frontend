@@ -11,9 +11,27 @@ let idEdit = document.querySelector('#id-form-edit')
 let idDelete = document.querySelector('#id-form-delete')
 let idClose = document.querySelector('#id-form-close')
 
+let idDisplay = document.querySelector('#id-display-accept')
 
 //const postTypeCss = ['sorry', 'thank', 'fuck', 'alert']
 let createButtonOrder = [apologizeButton, thankButton, yellButton, alertButton]
+
+function formatID (id) {
+  let idPara = document.querySelector('.id-paragraph')
+  idPara.textContent = `Your post id is ${id}. Please save this if you would like to edit or delete your post later.`
+}
+
+idDisplay.addEventListener('click', event => {
+  window.location.hash = ''
+  setTimeout(() => {
+    window.location.reload();
+  }, 0)
+})
+
+function displayId (id) {
+  formatID(id)
+  window.location.hash = `#display-id`
+}
 
 createButtonOrder.forEach((button, index) => {
   //console.log('well i tried')
