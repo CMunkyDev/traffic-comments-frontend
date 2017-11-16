@@ -32,9 +32,9 @@ const createTransportSelector = (selectorElement, yourTheir = 'Your', transportT
   selectorElement.innerHTML = innerHTML
 }
 
-const formatPostCreation = (edit, post = {}) => {
-  return `<div class="post-creator new-${postTypeCss[post.post_type] || 'post'}">
-      <h1 id="post-form-head" class="display-4">${edit} Post</h1>
+const formatPostCreation = (postTypeIndex, editType, post = {}) => {
+  return `<div class="post-creator new-${postTypeCss[post.post_type_index] || 'post'}">
+      <h1 id="post-form-head" class="display-4">${editType} Post</h1>
       <form id="post-form" data-parsley-validate>
         <div class="md-form form-lg">
           <input type="text" id="input-title" class="form-control" value=${post.title || ""}>

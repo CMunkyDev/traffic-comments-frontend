@@ -6,9 +6,7 @@ const formatPost = postObj => {
         <p class="card-text">${postObj.content}</p>
         <span class="post-created float-left">posted ${moment(postObj.created_at).format("MM-DD-YYYY hh:mm a")}</span>
         <div class="button-area float-right">
-          <button class="btn btn-sm ${buttonColorCss[postObj.post_type]}">Delete</button>
-          <button class="btn btn-sm ${buttonColorCss[postObj.post_type]}">Edit</button>
-          <button class="btn btn-sm ${buttonColorCss[postObj.post_type]}">Expand</button>
+          <button class="btn btn-sm ${buttonColorCss[postObj.post_type]}" >Expand</button>
         </div>
     </div>
   </div>`

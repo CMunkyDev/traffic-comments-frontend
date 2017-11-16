@@ -9,82 +9,95 @@
     <!-- <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
     <link rel="stylesheet" href="assets/styles/mdb.min.css"> -->
     <link rel="stylesheet" href="assets/styles/home.css">
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.0/parsley.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
     <script src="assets/scripts/constants.js"></script>
     <script src="assets/templates/post.js"></script>
-    <!-- <script src="assets/templates/create-post.js"></script>
-    <script defer src="assets/scripts/create.js"></script>
-    <script defer src="assets/scripts/md-form-fix.js"></script> -->
+    <script src="assets/templates/create-post.js"></script>
+    <script src="assets/scripts/md-form-fix.js"></script>
+    <script src="assets/scripts/create.js"></script>
     <script defer src="assets/scripts/main.js"></script>
   </head>
 
   <body>
     <div class="container-fluid main-contain">
       <nav class="row navbar navbar-expand-lg amber lighten-1">
-        <form class="form-inline">
-          <button class="btn btn-lg amber lighten-2">HOME</button>
-          <button class="btn btn-lg btn-success lighten-2">THANK</button>
-          <button class="btn btn-lg btn-pink lighten-2">APOLOGIZE</button>
-          <button class="btn btn-lg btn-warning lighten-2">ALERT</button>
-          <button class="btn btn-lg elegant-color">YELL</button>
-          <button class="btn btn-lg amber lighten-2">EDIT/DELETE</button>
-        </form>
+          <button id="home-button" class="btn btn-lg amber lighten-2">HOME</button>
+          <button id="thank-button" class="btn btn-lg btn-success lighten-2">THANK</button>
+          <button id="apologize-button" class="btn btn-lg btn-pink lighten-2">APOLOGIZE</button>
+          <button id="alert-button" class="btn btn-lg btn-warning lighten-2">ALERT</button>
+          <button id="yell-button" class="btn btn-lg elegant-color">YELL</button>
+          <button id="edit-delete-button" class="btn btn-lg amber lighten-2">EDIT/DELETE</button>
       </nav>
-      <div class="row header">
+      <div id="bar-div">
+        <div class="row header">
+          <div class="col info-color white-text text-center">
+            <h1 class="display-4">Traffic Comments 4 U</h1>
+          </div>
+        </div>
+        <div class="row info-color">
+          <div class="col"></div>
+          <div class="col-9 show-bar">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-success">
+                <input type="checkbox" checked autocomplete="off">THANK-YOUS
+              </label>
+              <label class="btn btn-pink">
+                <input type="checkbox" autocomplete="off"> APOLOGIES
+              </label>
+              <label class="btn btn-warning">
+                <input type="checkbox" autocomplete="off"> ALERTS
+              </label>
+              <label class="btn elegant-color">
+                <input type="checkbox" autocomplete="off"> YELLS
+              </label>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row info-color">
+          <div class="col"></div>
+          <div class="col-9 sort-bar">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm btn-success">
+                <input type="checkbox" checked autocomplete="off">THANK-YOUS
+              </label>
+              <label class="btn btn-sm btn-pink">
+                <input type="checkbox" autocomplete="off"> APOLOGIES
+              </label>
+              <label class="btn btn-sm btn-warning">
+                <input type="checkbox" autocomplete="off"> ALERTS
+              </label>
+              <label class="btn btn-sm elegant-color">
+                <input type="checkbox" autocomplete="off"> YELLS
+              </label>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
 
-        <div class="col info-color white-text text-center">
-          <h1 class="display-4">Traffic Comments 4 U</h1>
-        </div>
-      </div>
-      <div class="row info-color">
-        <div class="col"></div>
-        <div class="col-9 show-bar">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-success">
-              <input type="checkbox" checked autocomplete="off">THANK-YOUS
-            </label>
-            <label class="btn btn-pink">
-              <input type="checkbox" autocomplete="off"> APOLOGIES
-            </label>
-            <label class="btn btn-warning">
-              <input type="checkbox" autocomplete="off"> ALERTS
-            </label>
-            <label class="btn elegant-color">
-              <input type="checkbox" autocomplete="off"> YELLS
-            </label>
-          </div>
-        </div>
-        <div class="col"></div>
-      </div>
-      <div class="row info-color">
-        <div class="col"></div>
-        <div class="col-9 sort-bar">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-sm btn-success">
-              <input type="checkbox" checked autocomplete="off">THANK-YOUS
-            </label>
-            <label class="btn btn-sm btn-pink">
-              <input type="checkbox" autocomplete="off"> APOLOGIES
-            </label>
-            <label class="btn btn-sm btn-warning">
-              <input type="checkbox" autocomplete="off"> ALERTS
-            </label>
-            <label class="btn btn-sm elegant-color">
-              <input type="checkbox" autocomplete="off"> YELLS
-            </label>
-          </div>
-        </div>
-        <div class="col"></div>
-      </div>
       <div class="row content-area info-color">
         <div class="col sidebar"></div>
         <div class="col-9 post-area">
         </div>
         <div class="col sidebar"></div>
+      </div>
+    </div>
+    <div id="id-query">
+      <div id="id-popup">
+        <form>
+          <p class="h5 text-center mb-4">Edit/Delete</p>
+          <div class="md-form">
+              <input type="text" id="input-id" class="form-control">
+              <label for="input-id">Post ID</label>
+          </div>
+          <button id="id-form-edit" class="btn amber lighten-2">Edit</button>
+          <button id="id-form-delete" class="btn red">Delete</button>
+          <button id="id-form-close" class="btn blue lighten-2">Close</button>
       </div>
     </div>
   </body>

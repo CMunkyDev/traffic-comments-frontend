@@ -1,21 +1,12 @@
-let editArea = document.querySelector('.edit-area')
+function hideBars () {
+  let bardiv = document.querySelector('#bar-div')
+  bardiv.style.display = 'none'
+}
 
-let edit = 'Edit';
-
-editArea.innerHTML = formatPostCreation(edit)
-
-let saveEl = document.querySelector('#save-button')
-let timeInput = document.querySelector('#input-time')
-let selfMakeSelector = document.querySelector('#self-make')
-let selfYearSelector = document.querySelector('#self-year')
-let otherMakeSelector = document.querySelector('#other-make')
-let selfTransportSelector = document.querySelector('#self-transport')
-let otherTransportSelector = document.querySelector('#other-transport')
-let selfModel = document.querySelector('#self-model')
-let otherModel = document.querySelector('#other-model')
-let selfColor = document.querySelector('#self-color')
-let otherColor = document.querySelector('#other-color')
-
+function showBars () {
+  let bardiv = document.querySelector('#bar-div')
+  bardiv.style.display = 'block'
+}
 
 function acquireForm (formElement) {
   let labels = document.querySelectorAll('form label')
@@ -40,7 +31,7 @@ function acquireForm (formElement) {
   resultObj.other_car_make_id = parseInt(otherMakeSelector.value) || null
   resultObj.other_car_model = otherModel.value || null
   resultObj.other_car_color = otherColor.value || null
-  resultObj.post_type_index = 1 ||  postTypeCss.indexOf(formElement.classList.item(formElement.classList.length - 1))
+  resultObj.post_type_index = window.postTypeIndex
   console.log(resultObj)
   return resultObj
 }
@@ -48,14 +39,6 @@ function acquireForm (formElement) {
 function createUTC (date, time) {
   return moment.parseZone(moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm').add(-(moment().utcOffset()), 'm')).utc().format()
 }
-
-// timeInput.addEventListener('change')
-saveEl.addEventListener('click', event => {
-  event.preventDefault()
-  let body = acquireForm(event.target.form)
-  axios.post(`${BASE_URL}/posts`, body)
-})
-
 
 function toggleVisibility (...elements) {
   elements.forEach(element => {
@@ -91,32 +74,60 @@ function displayNone (...elements) {
 }
 
 
-createMakeSelector(selfMakeSelector, 'Your')
-createYearSelector(selfYearSelector)
-createMakeSelector(otherMakeSelector, 'Their')
-createTransportSelector(selfTransportSelector, 'Your')
-createTransportSelector(otherTransportSelector, 'Their')
+function switchToEdit(postTypeIndex, editType, post = {}) {
 
-toggleVisibility(selfMakeSelector, selfYearSelector, otherMakeSelector)
+  let editArea = document.querySelector('.post-area')
 
-toggleDisplay(selfModel, otherModel, selfColor, otherColor)
+  editArea.innerHTML = formatPostCreation(postTypeIndex, editType, post)
+  fixForm()
 
-selfTransportSelector.addEventListener('change', event => {
-  if (event.target.value == transportTypeArr.indexOf('Car')) {
-    toggleVisibility(selfMakeSelector, selfYearSelector)
-    toggleDisplay(selfModel, selfColor)
-  } else {
-    visibilityHidden(selfMakeSelector, selfYearSelector)
-    displayNone(selfModel, selfColor)
-  }
-})
+  window.saveEl = document.querySelector('#save-button')
+  window.timeInput = document.querySelector('#input-time')
+  window.selfMakeSelector = document.querySelector('#self-make')
+  window.selfYearSelector = document.querySelector('#self-year')
+  window.otherMakeSelector = document.querySelector('#other-make')
+  window.selfTransportSelector = document.querySelector('#self-transport')
+  window.otherTransportSelector = document.querySelector('#other-transport')
+  window.selfModel = document.querySelector('#self-model')
+  window.otherModel = document.querySelector('#other-model')
+  window.selfColor = document.querySelector('#self-color')
+  window.otherColor = document.querySelector('#other-color')
 
-otherTransportSelector.addEventListener('change', event => {
-  if (event.target.value == transportTypeArr.indexOf('Car')) {
-    toggleVisibility(otherMakeSelector)
-    toggleDisplay(otherModel, otherColor)
-  } else {
-    visibilityHidden(otherMakeSelector)
-    displayNone(otherModel, otherColor)
-  }
-})
+
+  // timeInput.addEventListener('change')
+  saveEl.addEventListener('click', event => {
+    event.preventDefault()
+    let body = acquireForm(event.target.form)
+    axios.post(`${BASE_URL}/posts`, body)
+  })
+
+  createMakeSelector(selfMakeSelector, 'Your')
+  createYearSelector(selfYearSelector)
+  createMakeSelector(otherMakeSelector, 'Their')
+  createTransportSelector(selfTransportSelector, 'Your')
+  createTransportSelector(otherTransportSelector, 'Their')
+
+  toggleVisibility(selfMakeSelector, selfYearSelector, otherMakeSelector)
+
+  toggleDisplay(selfModel, otherModel, selfColor, otherColor)
+
+  selfTransportSelector.addEventListener('change', event => {
+    if (event.target.value == transportTypeArr.indexOf('Car')) {
+      toggleVisibility(selfMakeSelector, selfYearSelector)
+      toggleDisplay(selfModel, selfColor)
+    } else {
+      visibilityHidden(selfMakeSelector, selfYearSelector)
+      displayNone(selfModel, selfColor)
+    }
+  })
+
+  otherTransportSelector.addEventListener('change', event => {
+    if (event.target.value == transportTypeArr.indexOf('Car')) {
+      toggleVisibility(otherMakeSelector)
+      toggleDisplay(otherModel, otherColor)
+    } else {
+      visibilityHidden(otherMakeSelector)
+      displayNone(otherModel, otherColor)
+    }
+  })
+}
