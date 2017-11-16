@@ -37,7 +37,7 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
       <h1 id="post-form-head" class="display-4">${editType} Post</h1>
       <form id="post-form" data-parsley-validate>
         <div class="md-form form-lg">
-          <input type="text" id="input-title" class="form-control" value=${post.title || ""}>
+          <input type="text" id="input-title" class="form-control" value="${post.title || ""}">
           <label for="input-title" class="">Post Title</label>
         </div>
         <div class="md-form">
@@ -45,7 +45,7 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
             <label for="input-content" class="">Get it off your chest</label>
         </div>
         <div class="md-form form-lg">
-          <input type="text" id="input-location" class="form-control" value=${post.location || ""}>
+          <input type="text" id="input-location" class="form-control" value="${post.location || ""}">
           <label for="input-location" class="">location</label>
         </div>
         <div class="form-group">
@@ -63,15 +63,15 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
           <select id="self-transport"></select>
           <select id="self-year"></select>
           <select id="self-make"></select>
-          <input id="self-model" type="text" placeholder="Your car's model" value=${post.self_model || ""}>
-          <input id="self-color" type="text" placeholder="Your car's color" value=${post.self_color || ""}>
+          <input id="self-model" type="text" placeholder="Your car's model" value="${post.self_model || ""}">
+          <input id="self-color" type="text" placeholder="Your car's color" value="${post.self_color || ""}">
         </div>
         <div id="other-data">
           <h4>Them</h4>
           <select id="other-transport"></select>
           <select id="other-make"></select>
-          <input id="other-model" type="text" placeholder="Their car's model" value=${post.other_model || ""}>
-          <input id="other-color" type="text" placeholder="Their car's color" value=${post.other_color || ""}>
+          <input id="other-model" type="text" placeholder="Their car's model" value="${post.other_model || ""}">
+          <input id="other-color" type="text" placeholder="Their car's color" value="${post.other_color || ""}">
         </div>
       </form>
       <button id="save-button" type="submit" form="post-form" class="btn ${formColorCss[post.post_type || window.location.hash] || 'primary-color-dark'}">SAVE</button>

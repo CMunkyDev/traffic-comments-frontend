@@ -31,7 +31,7 @@ idEdit.addEventListener('click', event => {
     .then(response => {
       let post = response.data.post
       window.location.hash= ''
-      console.log(post)
+      hideBars()
       switchToEdit(post.post_type_index, 'Edit', post)
     })
 })

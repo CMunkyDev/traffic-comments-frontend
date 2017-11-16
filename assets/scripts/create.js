@@ -32,7 +32,6 @@ function acquireForm (formElement) {
   resultObj.other_car_model = otherModel.value || null
   resultObj.other_car_color = otherColor.value || null
   resultObj.post_type_index = window.postTypeIndex
-  console.log(resultObj)
   return resultObj
 }
 
@@ -96,15 +95,30 @@ function switchToEdit(postTypeIndex, editType, post = {}) {
 
 
   // timeInput.addEventListener('change')
-  saveEl.addEventListener('click', event => {
-    event.preventDefault()
-    let body = acquireForm(event.target.form)
-    axios.post(`${BASE_URL}/posts`, body)
-      .then(response => {
-        displayId(response.data.post.id)
-        window.location.hash = '#id-display'
-      })
-  })
+  if (editType == 'Create') {
+    saveEl.addEventListener('click', event => {
+      event.preventDefault()
+      let body = acquireForm(event.target.form)
+      axios.post(`${BASE_URL}/posts`, body)
+        .then(response => {
+          displayId(response.data.post.id)
+          window.location.hash = '#id-display'
+        })
+    })
+  } else if (editType == 'Edit') {
+    saveEl.addEventListener('click', event => {
+      event.preventDefault()
+      let body = acquireForm(event.target.form)
+      axios.patch(`${BASE_URL}/posts/${post.id}`, body)
+        .then(response => {
+          displayId(response.data.post.id)
+          window.location.hash = '#id-display'
+        })
+    })
+  }
+
+
+  $('textarea').height( $('textarea')[0].scrollHeight )
 
   createMakeSelector(selfMakeSelector, 'Your', post.self_make)
   createYearSelector(selfYearSelector, post.self_year)
