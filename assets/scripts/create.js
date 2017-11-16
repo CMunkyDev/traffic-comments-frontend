@@ -94,6 +94,7 @@ function switchToEdit(postTypeIndex, editType, post = {}) {
   window.otherColor = document.querySelector('#other-color')
 
 
+
   // timeInput.addEventListener('change')
   saveEl.addEventListener('click', event => {
     event.preventDefault()
@@ -105,11 +106,11 @@ function switchToEdit(postTypeIndex, editType, post = {}) {
       })
   })
 
-  createMakeSelector(selfMakeSelector, 'Your')
-  createYearSelector(selfYearSelector)
-  createMakeSelector(otherMakeSelector, 'Their')
-  createTransportSelector(selfTransportSelector, 'Your')
-  createTransportSelector(otherTransportSelector, 'Their')
+  createMakeSelector(selfMakeSelector, 'Your', post.self_make)
+  createYearSelector(selfYearSelector, post.self_year)
+  createMakeSelector(otherMakeSelector, 'Their', post.other_make)
+  createTransportSelector(selfTransportSelector, 'Your', post.self_transport)
+  createTransportSelector(otherTransportSelector, 'Their', post.other_transport)
 
   toggleVisibility(selfMakeSelector, selfYearSelector, otherMakeSelector)
 

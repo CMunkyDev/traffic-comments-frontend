@@ -4,30 +4,30 @@ const minuteToNearestFifteen = minute => {
   return `${Math.floor(parseInt(minute)/15) * 15}`
 }
 
-const createMakeSelector = (selectorElement, person = 'Your') => {
+const createMakeSelector = (selectorElement, person = 'Your', defaultValue = "") => {
   selectorElement.innerHTML = `<option value=0>${person} Car's Make</option>`
   axios.get(`${BASE_URL}/makes`)
   .then(response => {
     response.data.makes.forEach(make => {
-      if (make.show) {
-        selectorElement.innerHTML += `<option value=${make.id}>${make.name}</option>`
+      if (make.show || make.name == defaultValue) {
+        selectorElement.innerHTML += `<option value=${make.id} ${make.name == defaultValue ? "selected" : ""}>${make.name}</option>`
       }
     })
   })
 }
 
-const createYearSelector = (selectorElement, startYear = 1900, endYear = (new Date().getFullYear() + 1)) => {
+const createYearSelector = (selectorElement, defaultValue = "", startYear = 1900, endYear = (new Date().getFullYear() + 1)) => {
   let innerHTML = `<option value=0>Your Car's Year</option>`
   for (let y = endYear; y >= startYear; y--) {
-    innerHTML += `<option value=${y}>${y}</option>`
+    innerHTML += `<option value=${y} ${y == defaultValue ? "selected" : ""}>${y}</option>`
   }
   selectorElement.innerHTML = innerHTML;
 }
 
-const createTransportSelector = (selectorElement, yourTheir = 'Your', transportTypeArray = transportTypeArr) => {
+const createTransportSelector = (selectorElement, yourTheir = 'Your', defaultValue = "", transportTypeArray = transportTypeArr) => {
   let innerHTML = `<option value=null>${yourTheir} Mode of Transport</option>`
   transportTypeArray.forEach((mode, index) => {
-    innerHTML += `<option value="${index}">${mode}</option>`
+    innerHTML += `<option value="${index}" ${index == defaultValue ? "selected" : ""}>${mode}</option>`
   })
   selectorElement.innerHTML = innerHTML
 }
@@ -41,7 +41,7 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
           <label for="input-title" class="">Post Title</label>
         </div>
         <div class="md-form">
-            <textarea id="input-content" class="md-textarea"><${post.content || ""}/textarea>
+            <textarea id="input-content" class="md-textarea">${post.content || ""}</textarea>
             <label for="input-content" class="">Get it off your chest</label>
         </div>
         <div class="md-form form-lg">
@@ -63,15 +63,15 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
           <select id="self-transport"></select>
           <select id="self-year"></select>
           <select id="self-make"></select>
-          <input id="self-model" type="text" placeholder="Your car's model">
-          <input id="self-color" type="text" placeholder="Your car's color">
+          <input id="self-model" type="text" placeholder="Your car's model" value=${post.self_model || ""}>
+          <input id="self-color" type="text" placeholder="Your car's color" value=${post.self_color || ""}>
         </div>
         <div id="other-data">
           <h4>Them</h4>
           <select id="other-transport"></select>
           <select id="other-make"></select>
-          <input id="other-model" type="text" placeholder="Their car's model">
-          <input id="other-color" type="text" placeholder="Their car's color">
+          <input id="other-model" type="text" placeholder="Their car's model" value=${post.other_model || ""}>
+          <input id="other-color" type="text" placeholder="Their car's color" value=${post.other_color || ""}>
         </div>
       </form>
       <button id="save-button" type="submit" form="post-form" class="btn ${formColorCss[post.post_type || window.location.hash] || 'primary-color-dark'}">SAVE</button>
