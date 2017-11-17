@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'//http://traffic-comment-site.herokuapp.com'
+const BASE_URL = 'http://traffic-comment-site.herokuapp.com'
 const transportTypeArr = ['Foot', 'Bike', 'Car', 'Motorbike', 'Public Transport', 'Other']
 const postTypeArr = ['Sorry', 'Thank You', '!@#$ You', 'Alert']
 const postTypeCss = ['sorry', 'thank', 'fuck', 'alert']
