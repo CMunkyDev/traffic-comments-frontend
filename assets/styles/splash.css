@@ -3,12 +3,35 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-
-}
-.clouds {
-  background-image: url('https://i.giphy.com/xEETmXJHvki08.gif');
+  top: 0;
+  padding: 0;
 }
 
 .read-me {
+  position: relative;
+  text-align: center;
+  margin: auto;
+  top: 15%;
   font-family: 'Dosis';
+}
+
+.read-me h1 {
+  color: #fff;
+  font-size: 6rem;
+}
+
+.read-me h2 {
+  color: rgba(255,255,255, 0.5);
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 4px #0099CC;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+p {
+  font-size: 2rem;
+  color: rgba(255,255,255,0.8);
 }
