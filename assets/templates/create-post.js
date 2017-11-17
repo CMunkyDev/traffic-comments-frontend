@@ -32,21 +32,22 @@ const createTransportSelector = (selectorElement, yourTheir = 'Your', defaultVal
   selectorElement.innerHTML = innerHTML
 }
 
+
 const formatPostCreation = (postTypeIndex, editType, post = {}) => {
   return `<div class="post-creator new-${postTypeCss[postTypeIndex] || 'post'}">
       <h1 id="post-form-head" class="display-4">${editType} Post</h1>
       <form id="post-form" data-parsley-validate>
         <div class="md-form form-lg">
           <input type="text" id="input-title" class="form-control" value="${post.title || ""}">
-          <label for="input-title" class="">Post Title</label>
+          <label for="input-title" class="${editType === 'Edit' ? 'active' : ''}">Post Title</label>
         </div>
         <div class="md-form">
             <textarea id="input-content" class="md-textarea">${post.content || ""}</textarea>
-            <label for="input-content" class="">Get it off your chest</label>
+            <label for="input-content" class="${editType === 'Edit' ? 'active' : ''}">Get it off your chest</label>
         </div>
         <div class="md-form form-lg">
           <input type="text" id="input-location" class="form-control" value="${post.location || ""}">
-          <label for="input-location" class="">location</label>
+          <label for="input-location" class="${editType === 'Edit' ? 'active' : ''}">location</label>
         </div>
         <div class="form-group">
           <label for="input-date" class="col-2 col-form-label">Date</label>
