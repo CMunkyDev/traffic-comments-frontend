@@ -75,6 +75,6 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
           <input id="other-color" type="text" placeholder="Their car's color" value="${post.other_color || ""}">
         </div>
       </form>
-      <button id="save-button" type="submit" form="post-form" class="btn ${formColorCss[post.post_type || window.location.hash] || 'primary-color-dark'}">SAVE</button>
+      <button id="save-button" type="submit" form="post-form" class="btn" style="background-color:${postTypeColor[postTypeIndex] || ""}">SAVE</button>
     </div>`
 }
