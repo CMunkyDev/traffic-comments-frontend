@@ -3,7 +3,9 @@
 }
 
 .header {
-  height: 10vh;
+  font-family: 'Dosis';
+  font-size: 6rem;
+  letter-spacing: 0.4rem;
 }
 
 .post {
