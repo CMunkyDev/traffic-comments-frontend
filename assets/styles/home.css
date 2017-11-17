@@ -173,3 +173,7 @@ textarea.form-control::placeholder {
 .button-area {
   visibility: hidden;
 }
+
+h4 {
+  margin-top: 20px;
+}
