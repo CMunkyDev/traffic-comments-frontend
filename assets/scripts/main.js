@@ -19,6 +19,34 @@ let area = document.querySelector('.content-area')
 //const postTypeCss = ['sorry', 'thank', 'fuck', 'alert']
 let createButtonOrder = [apologizeButton, thankButton, yellButton, alertButton]
 
+//fix this later  vvv
+let fakeButtonLolThank = document.querySelector('#fake-button-thank')
+let fakeButtonLolSorry = document.querySelector('#fake-button-sorry')
+let fakeButtonLolAlert = document.querySelector('#fake-button-alert')
+let fakeButtonLolYell = document.querySelector('#fake-button-yell')
+
+let sortButtonOrder = [fakeButtonLolSorry, fakeButtonLolThank, fakeButtonLolYell, fakeButtonLolAlert]
+
+sortButtonOrder.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    axios.get(`${BASE_URL}/posts`).then(result => {
+      let postFill = ''
+      //let theRest = ''
+      let filteredPosts = result.data.posts.filter(el => {
+        return el.post_type == index;
+      })
+      filteredPosts.forEach(post => {
+        // if (post.content.length > 280) {
+        //   theRest = post.content.slice(251)
+        //   post.content = post.content.slice(0, 251)
+        // }
+        postFill += formatPost(post)
+      })
+      postArea.innerHTML = postFill
+    })
+  })
+})
+
 function goHome () {
   window.location.hash = ''
   setTimeout(() => {

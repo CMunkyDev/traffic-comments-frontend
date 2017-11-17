@@ -20,8 +20,8 @@ function acquireForm (formElement) {
   })
   resultObj.title = formData['input-title']
   resultObj.content = formData['input-content']
-  //resultObj.location = formData['input-location']
-  //resultObj.date = createUTC(formData["input-date"], formData["input-time"])
+  resultObj.location = formData['input-location']
+  resultObj.date = createUTC(formData["input-date"], formData["input-time"])
   resultObj.self_transportation_index = parseInt(selfTransportSelector.value)
   resultObj.self_car_make_id = parseInt(selfMakeSelector.value) || null
   resultObj.self_car_model = selfModel.value || null
@@ -129,6 +129,22 @@ function switchToEdit(postTypeIndex, editType, post = {}) {
   toggleVisibility(selfMakeSelector, selfYearSelector, otherMakeSelector)
 
   toggleDisplay(selfModel, otherModel, selfColor, otherColor)
+
+  if (selfTransportSelector.value == transportTypeArr.indexOf('Car')) {
+    toggleVisibility(selfMakeSelector, selfYearSelector)
+    toggleDisplay(selfModel, selfColor)
+  } else {
+    visibilityHidden(selfMakeSelector, selfYearSelector)
+    displayNone(selfModel, selfColor)
+  }
+
+  if (otherTransportSelector.value == transportTypeArr.indexOf('Car')) {
+    toggleVisibility(otherMakeSelector)
+    toggleDisplay(otherModel, otherColor)
+  } else {
+    visibilityHidden(otherMakeSelector)
+    displayNone(otherModel, otherColor)
+  }
 
   selfTransportSelector.addEventListener('change', event => {
     if (event.target.value == transportTypeArr.indexOf('Car')) {

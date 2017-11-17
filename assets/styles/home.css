@@ -8,6 +8,7 @@
 
 .post {
   margin: 10px;
+  margin-bottom: 20px;
   /*min-width: 335px;*/
 }
 
@@ -36,6 +37,7 @@
   border: 3px solid;
   border-radius: 5px;
   border-color: inherit;
+  padding: 10px
 }
 
 .post .card-title {
@@ -46,7 +48,7 @@
 
 .post-created {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   padding: 5px;
   color: #ccc;
   font-weight: 100;

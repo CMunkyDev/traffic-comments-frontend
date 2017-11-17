@@ -51,11 +51,11 @@ const formatPostCreation = (postTypeIndex, editType, post = {}) => {
         <div class="form-group">
           <label for="input-date" class="col-2 col-form-label">Date</label>
           <div class="col-10">
-            <input class="form-control" type="date" value="${moment(post.time).format('YYYY-MM-DD') || moment().format('YYYY-MM-DD')}" id="input-date">
+            <input class="form-control" type="date" value="${moment(post.date).format('YYYY-MM-DD') || moment().format('YYYY-MM-DD')}" id="input-date">
           </div>
           <label for="input-time" class="col-2 col-form-label">Time</label>
           <div class="col-10">
-            <input class="form-control" type="time" value="${moment(`${moment().format('HH')}:${minuteToNearestFifteen(moment().format('mm'))}`, 'HH:mm').format('HH:mm')}" id="input-time" step="900">
+            <input class="form-control" type="time" value="${post.date ? moment(post.date).format('HH:mm') : moment(`${moment().format('HH')}:${minuteToNearestFifteen(moment().format('mm'))}`, 'HH:mm').format('HH:mm')}" id="input-time" step="900">
           </div>
         </div>
         <div id="self-data">
