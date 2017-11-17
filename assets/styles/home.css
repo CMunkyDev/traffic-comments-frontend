@@ -167,3 +167,7 @@ textarea.form-control::placeholder {
 .content-area {
   background-color: #33b5e5;
 }
+
+.button-area {
+  visibility: hidden;
+}
